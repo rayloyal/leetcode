@@ -5,23 +5,38 @@ using namespace std;
 
 class Solution {
 public:
-    bool isPalindrome(int x) {
-        if(x < 0)
-            return false;
-        if(x < 10)
-            return true;
+    int myAtoi(string s) {
+        int len = s.length();
 
-        int rem = x % 10;
-        if(rem == 0)
-            return false;
+        bool negative = false;
+        int i = 0;
+        long ret = 0;
 
-        int quo = x / 10;
-        long rx = rem;
-        while(quo != 0){
-            rem = quo % 10;
-            rx = rx * 10 + rem;
-            quo = quo / 10;
+        for(; i < len; i++){
+            if(s[i] == ' ')
+                continue;
+
+            if(s[i] == '-'){
+                negative = true;
+                i++;
+            } else if (s[i] == '+'){
+                negative = false;
+                i++;
+            }
+            break;
         }
-        return rx < INT_MAX && x == rx;
+
+        for(; i < len; i++){
+            if(s[i] < '0')
+                break;
+            if(s[i] > '9')
+                break;
+
+            ret = ret * 10 + (s[i] - '0');
+            if(ret > INT_MAX)
+                return negative ? INT_MIN : INT_MAX;
+        }
+
+        return negative ? ret * -1 : ret;
     }
 };

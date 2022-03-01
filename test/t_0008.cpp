@@ -7,12 +7,12 @@ using ::testing::Test;
 TEST(Q0008, EXAMPLE){
     Solution solution;
 
-    int x1 = 121;
-    ASSERT_EQ(solution.isPalindrome(x1), true);
+    string s1 = "42";
+    ASSERT_EQ(solution.myAtoi(s1), 42);
 
-    int x2 = -121;
-    ASSERT_EQ(solution.isPalindrome(x2), false);
+    string s2 = "   -42";
+    ASSERT_EQ(solution.myAtoi(s2), -42);
 
-    int x3 = 10;
-    ASSERT_EQ(solution.isPalindrome(x3), false);
+    string s3 = "4193 with words";
+    ASSERT_EQ(solution.myAtoi(s3), 4193);
 }
