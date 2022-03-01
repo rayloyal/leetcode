@@ -21,3 +21,5 @@ TEST(Q$1, EXAMPLE){
     Solution solution;
 
 }" > test/t_"$1".cpp
+
+git add .
